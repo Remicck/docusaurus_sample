@@ -1,24 +1,14 @@
 name: Deploy
-
-on:
-  push:
-    branches: [ main ]
+on: [push]
 
 jobs:
   deploy:
-
-    runs-on: ubuntu-18.04
-    defaults:
-      run:
-        working-directory: website
-
+    runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-    - name: git config
-      run: |
-        git config --global user.email "remicck@gmail.com"
-        git config --global user.name "Remicck"
-    - run: yarn install
-    - run: yarn deploy
-      env:
-        GIT_USER: ${{ github.actor }}:${{ github.token }}
+      - uses: actions/checkout@master
+      - uses: redkubes/docusaurus-deploy-action@v1
+        with:
+          source-folder: website
+          git-user: Remicck
+          git-password: ${{ github.token }}
+          deployment-branch: gh-pages
