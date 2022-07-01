@@ -1,5 +1,4 @@
 name: Deploy
-on: [push]
 
 jobs:
   deploy:
@@ -8,7 +7,7 @@ jobs:
       - uses: actions/checkout@master
       - uses: redkubes/docusaurus-deploy-action@v1
         with:
-          source-folder: website
+          source-folder: src
           git-user: Remicck
           git-password: ${{ github.token }}
           deployment-branch: gh-pages
