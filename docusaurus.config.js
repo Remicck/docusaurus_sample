@@ -23,12 +23,20 @@ const config = {
   // metadata like html lang. For example, if your site is Chinese, you may want
   // to replace "en" with "zh-Hans".
   i18n: {
-    defaultLocale: 'en',
-    locales: ['en'],
+    defaultLocale: 'ja',
+    locales: ['ja'],
   },
 
-  plugins: [require.resolve("@cmfcmf/docusaurus-search-local")],
-
+  plugins: [
+    [
+      require.resolve("@cmfcmf/docusaurus-search-local"),
+      {
+        language: "ja",
+        indexBlog: true,
+        indexDocs: true,
+      },
+    ],
+  ],
   presets: [
     [
       'classic',
